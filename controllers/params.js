@@ -15,6 +15,10 @@ exports.paramDenomination = async (req, res, next, denomination) => {
 exports.paramSiren = async (req, res, next, siren) => {
     let entrepriseMatch = req.result.filter(ets => ets.siren === siren);
     if (entrepriseMatch.length === 0) {
+        const checkIfEmpty = utils.checkIfEmpty(siren);
+        if (checkIfEmpty) {
+            return res.status(400).json('Merci de renseigner le siren');
+        }
         const getInfosSiren = await getDataPappers(`&siren=${siren}`);
         req.result.push(getInfosSiren.resultats[0]);
         next();
