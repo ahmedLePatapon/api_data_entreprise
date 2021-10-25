@@ -8,6 +8,9 @@ exports.paramDenomination = async (req, res, next, denomination) => {
         return res.status(400).json('Merci de renseigner la dénomination');
     }
     const getInfosDenomination = await getDataPappers(`&q=${denomination}`)
+    console.log('**********************');
+    console.log('getInfosDenomination', getInfosDenomination);
+    console.log('**********************');
     req.result = getInfosDenomination.resultats;
     next();
 };
