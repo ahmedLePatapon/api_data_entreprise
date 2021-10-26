@@ -2,6 +2,9 @@ const utils = require('../utilities/index');
 const { getDataPappers } = require('../handlers/dataPappers');
 
 exports.paramDenomination = async (req, res, next, denomination) => {
+    console.log('**********************');
+    console.log('denomination', denomination);
+    console.log('**********************');
     // recuperation des datas via la denomination
     const checkIfEmpty = utils.checkIfEmpty(denomination);
     if (checkIfEmpty) {
