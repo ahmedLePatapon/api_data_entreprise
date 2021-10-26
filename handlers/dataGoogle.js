@@ -10,7 +10,7 @@ const scrappingGoogle = async (data) => {
         slowMo: 10,
         devtools: true
     };
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
     
     await page.goto('https://www.google.com/', { waitUntil: 'domcontentloaded' });
@@ -63,7 +63,7 @@ const scrappingMaps = async (data) => {
         slowMo: 10,
         devtools: true
     };
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
     const page = await browser.newPage();
     
     await page.goto('https://www.google.com/maps/', { waitUntil: 'domcontentloaded' });
